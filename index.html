@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoSon Hits - Volume 1</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1>NeoSon</h1>
+                <span class="subtitle">HITS VOLUME 1</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Album Art Section -->
+            <div class="album-section">
+                <div class="album-art">
+                    <div class="cd-container">
+                        <div class="cd">
+                            <div class="cd-hole"></div>
+                            <img src="capa.png" alt="NeoSon Hits - Capa" class="capa">
+                        </div>
+                        <div class="cd-internal">
+                            <img src="interno.png" alt="NeoSon Hits - CD Interno" class="interno">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Player Section -->
+            <div class="player-section">
+                <div class="player">
+                    <div class="track-info">
+                        <h2 class="track-title">Fujimoto, o Samurai do Deploy</h2>
+                        <p class="artist">NeoSon</p>
+                    </div>
+                    
+                    <div class="player-controls">
+                        <button class="control-btn" id="prevBtn">⏮</button>
+                        <button class="control-btn play-pause" id="playPauseBtn">▶</button>
+                        <button class="control-btn" id="nextBtn">⏭</button>
+                    </div>
+                    
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress" id="progress"></div>
+                        </div>
+                        <div class="time-display">
+                            <span id="currentTime">0:00</span>
+                            <span id="duration">0:00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="volume-control">
+                        <span>🔊</span>
+                        <input type="range" id="volumeSlider" min="0" max="100" value="70">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Track List -->
+            <div class="tracklist-section">
+                <h3>NeoSon Hits - Volume 1</h3>
+                <div class="tracklist">
+                    <div class="track active" data-track="0">
+                        <span class="track-number">01</span>
+                        <span class="track-name">Fujimoto, o Samurai do Deploy</span>
+                        <span class="track-duration">3:45</span>
+                    </div>
+                    <div class="track" data-track="1">
+                        <span class="track-number">02</span>
+                        <span class="track-name">Virando Noite na Madrugada</span>
+                        <span class="track-duration">4:12</span>
+                    </div>
+                    <div class="track" data-track="2">
+                        <span class="track-number">03</span>
+                        <span class="track-name">Servidor Caiu, Mas Eu Não</span>
+                        <span class="track-duration">3:28</span>
+                    </div>
+                    <div class="track" data-track="3">
+                        <span class="track-number">04</span>
+                        <span class="track-name">Máquina Louca no Docker</span>
+                        <span class="track-duration">4:05</span>
+                    </div>
+                    <div class="track" data-track="4">
+                        <span class="track-number">05</span>
+                        <span class="track-name">Cadê o Log, Fujimoto?</span>
+                        <span class="track-duration">3:52</span>
+                    </div>
+                    <div class="track" data-track="5">
+                        <span class="track-number">06</span>
+                        <span class="track-name">Ctrl + Alt + Fujimoto</span>
+                        <span class="track-duration">3:37</span>
+                    </div>
+                    <div class="track" data-track="6">
+                        <span class="track-number">07</span>
+                        <span class="track-name">Amor de Servidor (Não Aguenta Conexão)</span>
+                        <span class="track-duration">4:18</span>
+                    </div>
+                    <div class="track" data-track="7">
+                        <span class="track-number">08</span>
+                        <span class="track-name">Virando Noite e Tomando Café</span>
+                        <span class="track-duration">3:44</span>
+                    </div>
+                    <div class="track" data-track="8">
+                        <span class="track-number">09</span>
+                        <span class="track-name">As Máquinas Também Sentem (Quando São Formatadas)</span>
+                        <span class="track-duration">4:33</span>
+                    </div>
+                    <div class="track" data-track="9">
+                        <span class="track-number">10</span>
+                        <span class="track-name">Fujimoto em Produção</span>
+                        <span class="track-duration">3:59</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Audio Element -->
+        <audio id="audioPlayer" preload="metadata" muted>
+            <source src="Ode ao Fujimoto.mp3" type="audio/mpeg">
+            Seu navegador não suporta o elemento de áudio.
+        </audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
