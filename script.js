@@ -46,6 +46,11 @@ class NeoSonPlayer {
                 title: "GPS, o Calanguin Sensual",
                 file: "GPS, o Calanguin Sensual.mp3",
                 duration: "3:08"
+            },
+            {
+                title: "Leno e Escreveno",
+                file: "Leno e Escreveno.mp3",
+                duration: "3:08"
             }
         ];
         
