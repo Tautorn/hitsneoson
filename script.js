@@ -28,6 +28,11 @@ class NeoSonPlayer {
                 duration: "1:45"
             },
             {
+                title: "Cabelin de Playmobil [English Version]",
+                file: "O Cabelin de Playmobil [English Version].mp3",
+                duration: "3:37"
+            },
+            {
                 title: "No Silêncio do Maycon",
                 file: "No Silêncio do Maycon.mp3",
                 duration: "2:47"
@@ -48,7 +53,7 @@ class NeoSonPlayer {
                 duration: "3:08"
             },
             {
-                title: "Leno e Escreveno",
+                title: "[Bonus Track] Leno e Escreveno",
                 file: "Leno e Escreveno.mp3",
                 duration: "3:08"
             }
@@ -296,9 +301,13 @@ class NeoSonPlayer {
             trackElement.className = `track ${index === this.currentTrackIndex ? 'active' : ''}`;
             trackElement.setAttribute('data-track', index);
             
+            const trackNameHTML = index === 8 
+                ? `${track.title} <span class="chip">E</span>`
+                : track.title;
+            
             trackElement.innerHTML = `
                 <span class="track-number">${(index + 1).toString().padStart(2, '0')}</span>
-                <span class="track-name">${track.title}</span>
+                <span class="track-name">${trackNameHTML}</span>
                 <span class="track-duration">${track.duration}</span>
             `;
             
