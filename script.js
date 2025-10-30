@@ -15,52 +15,37 @@ class NeoSonPlayer {
             {
                 title: "Fujimoto, o Samurai do Deploy",
                 file: "Ode ao Fujimoto.mp3",
-                duration: "3:45"
+                duration: "2:50"
             },
             {
                 title: "Virando Note na Madrugada",
-                file: "Ode ao Fujimoto.mp3", // Usando o mesmo arquivo por enquanto
-                duration: "4:12"
+                file: "Ficar Virando Noite.mp3", // Usando o mesmo arquivo por enquanto
+                duration: "2:25"
             },
             {
-                title: "Servidor Caiu, Mas Eu Não",
-                file: "Ode ao Fujimoto.mp3",
-                duration: "3:28"
+                title: "Cabelin de Playmobil",
+                file: "O Cabelin de Playmobil.mp3",
+                duration: "1:45"
             },
             {
-                title: "Máquina Louca no Docker",
-                file: "Ode ao Fujimoto.mp3",
-                duration: "4:05"
+                title: "No Silêncio do Maycon",
+                file: "No Silêncio do Maycon.mp3",
+                duration: "2:47"
             },
             {
-                title: "Cadê o Log, Fujimoto?",
-                file: "Ode ao Fujimoto.mp3",
-                duration: "3:52"
+                title: "Forró do Sabirila",
+                file: "Forro do Sabirila.mp3",
+                duration: "2:11"
             },
             {
-                title: "Ctrl + Alt + Fujimoto",
-                file: "Ode ao Fujimoto.mp3",
-                duration: "3:37"
+                title: "Schu Passeios sem Motor",
+                file: "Schu Passeios sem Motor.mp3",
+                duration: "3:35"
             },
             {
-                title: "Amor de Servidor (Não Aguenta Conexão)",
-                file: "Ode ao Fujimoto.mp3",
-                duration: "4:18"
-            },
-            {
-                title: "Virando Note e Tomando Café",
-                file: "Ode ao Fujimoto.mp3",
-                duration: "3:44"
-            },
-            {
-                title: "As Máquinas Também Sentem (Quando São Formatadas)",
-                file: "Ode ao Fujimoto.mp3",
-                duration: "4:33"
-            },
-            {
-                title: "Fujimoto em Produção",
-                file: "Ode ao Fujimoto.mp3",
-                duration: "3:59"
+                title: "GPS, o Calanguin Sensual",
+                file: "GPS, o Calanguin Sensual.mp3",
+                duration: "3:08"
             }
         ];
         
