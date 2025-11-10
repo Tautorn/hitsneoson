@@ -53,9 +53,9 @@ class NeoSonPlayer {
                 duration: "3:08"
             },
             {
-                title: "[Bonus Track] Leno e Escreveno",
-                file: "Leno e Escreveno.mp3",
-                duration: "3:08"
+                title: "Xexerinha, que dança na pontinha",
+                file: "Xexerinha.mp3",
+                duration: "2:10"
             }
         ];
         
@@ -302,7 +302,7 @@ class NeoSonPlayer {
             trackElement.setAttribute('data-track', index);
             
             const trackNameHTML = index === 8 
-                ? `${track.title} <span class="chip">E</span>`
+                ? `${track.title} <span class="chip">NEW</span>`
                 : track.title;
             
             trackElement.innerHTML = `
