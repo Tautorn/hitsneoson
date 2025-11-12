@@ -56,6 +56,16 @@ class NeoSonPlayer {
                 title: "Xexerinha, que dança na pontinha",
                 file: "Xexerinha.mp3",
                 duration: "2:10"
+            },
+            {
+                title: "Loresna",
+                file: "Loresna.mp3",
+                duration: "3:15"
+            },
+            {
+                title: "Prandinin Prateado",
+                file: "Prandinin Prateado.mp3",
+                duration: "3:44"
             }
         ];
         
@@ -301,7 +311,7 @@ class NeoSonPlayer {
             trackElement.className = `track ${index === this.currentTrackIndex ? 'active' : ''}`;
             trackElement.setAttribute('data-track', index);
             
-            const trackNameHTML = index === 8 
+            const trackNameHTML = index === 8 || index === 9 || index === 10
                 ? `${track.title} <span class="chip">NEW</span>`
                 : track.title;
             
