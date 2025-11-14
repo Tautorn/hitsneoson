@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoSon Hits - Volume 2 - Proibidão</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1>NeoSon</h1>
+                <span class="subtitle">HITS VOLUME 2 - PROIBIDÃO</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Album Art Section -->
+            <div class="album-section">
+                <div class="album-art">
+                    <div class="cd-container">
+                        <div class="cd">
+                            <div class="cd-hole"></div>
+                            <img src="capa.png" alt="NeoSon Hits Volume 2 - Proibidão - Capa" class="capa">
+                        </div>
+                        <div class="cd-internal">
+                            <img src="interno.png" alt="NeoSon Hits Volume 2 - Proibidão - CD Interno" class="interno">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Player Section -->
+            <div class="player-section">
+                <div class="player">
+                    <div class="track-info">
+                        <h2 class="track-title">Carregando...</h2>
+                        <p class="artist">NeoSon</p>
+                    </div>
+                    
+                    <div class="player-controls">
+                        <button class="control-btn" id="prevBtn">⏮</button>
+                        <button class="control-btn play-pause" id="playPauseBtn">▶</button>
+                        <button class="control-btn" id="nextBtn">⏭</button>
+                    </div>
+                    
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress" id="progress"></div>
+                        </div>
+                        <div class="time-display">
+                            <span id="currentTime">0:00</span>
+                            <span id="duration">0:00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="volume-control">
+                        <span>🔊</span>
+                        <input type="range" id="volumeSlider" min="0" max="100" value="70">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Track List -->
+            <div class="tracklist-section">
+                <h3>NeoSon Hits - Volume 2 - Proibidão</h3>
+                <div class="tracklist">
+                    <!-- As faixas serão adicionadas dinamicamente pelo JavaScript -->
+                </div>
+            </div>
+        </main>
+
+        <!-- Audio Element -->
+        <audio id="audioPlayer" preload="metadata" muted>
+            Seu navegador não suporta o elemento de áudio.
+        </audio>
+    </div>
+
+    <script src="proibidao-script.js"></script>
+</body>
+</html>
+
