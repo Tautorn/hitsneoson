@@ -535,13 +535,16 @@ document.addEventListener('DOMContentLoaded', () => {
 class EasterEgg {
     constructor() {
         this.sequence = [];
-        this.password = 'cdzao';
+        this.password = 'transformer';
         this.modal = document.getElementById('easterEggModal');
         this.passwordInput = document.getElementById('easterEggPassword');
         this.submitBtn = document.getElementById('easterEggSubmit');
         this.cancelBtn = document.getElementById('easterEggCancel');
         this.errorMsg = document.getElementById('easterEggError');
         this.sequenceTimeout = null;
+        this.leftEye = document.querySelector('.left-eye');
+        this.rightEye = document.querySelector('.right-eye');
+        this.mouth = document.querySelector('.character-mouth');
         
         this.init();
     }
@@ -560,6 +563,9 @@ class EasterEgg {
                 this.checkPassword();
             }
         });
+        
+        // Atualizar olhos conforme digitação
+        this.passwordInput.addEventListener('input', () => this.updateEyes());
         
         // ESC para fechar
         document.addEventListener('keydown', (e) => {
@@ -646,7 +652,53 @@ class EasterEgg {
         this.modal.classList.add('show');
         this.passwordInput.value = '';
         this.errorMsg.textContent = '';
+        this.resetEyes();
         this.passwordInput.focus();
+    }
+    
+    resetEyes() {
+        // Reset dos olhos para fechados
+        this.leftEye.className = 'character-eye left-eye eye-0';
+        this.rightEye.className = 'character-eye right-eye eye-0';
+        this.mouth.classList.remove('smiling');
+    }
+    
+    updateEyes() {
+        const inputLength = this.passwordInput.value.length;
+        const maxLength = this.password.length;
+        
+        // Calcula o progresso (0 a 11 para "transformer")
+        const progress = Math.min(inputLength, maxLength);
+        
+        // Atualiza os olhos baseado no progresso
+        this.leftEye.className = `character-eye left-eye eye-${progress}`;
+        this.rightEye.className = `character-eye right-eye eye-${progress}`;
+        
+        // Adiciona animação de "watching" quando os olhos estão abertos
+        if (progress >= maxLength) {
+            this.leftEye.classList.add('watching');
+            this.rightEye.classList.add('watching');
+            this.mouth.classList.add('smiling');
+        } else {
+            this.leftEye.classList.remove('watching');
+            this.rightEye.classList.remove('watching');
+            this.mouth.classList.remove('smiling');
+        }
+        
+        // Pisca os olhos quando digita
+        if (inputLength > 0) {
+            this.blinkEyes();
+        }
+    }
+    
+    blinkEyes() {
+        this.leftEye.classList.add('blinking');
+        this.rightEye.classList.add('blinking');
+        
+        setTimeout(() => {
+            this.leftEye.classList.remove('blinking');
+            this.rightEye.classList.remove('blinking');
+        }, 300);
     }
     
     closeModal() {
@@ -654,16 +706,25 @@ class EasterEgg {
         this.passwordInput.value = '';
         this.errorMsg.textContent = '';
         this.sequence = [];
+        this.resetEyes();
     }
     
     checkPassword() {
         const input = this.passwordInput.value.trim().toLowerCase();
         
         if (input === this.password) {
-            // Senha correta - redirecionar
-            window.location.href = 'vol2/index.html';
+            // Senha correta - animação de sucesso antes de redirecionar
+            this.mouth.classList.add('smiling');
+            this.leftEye.classList.add('watching');
+            this.rightEye.classList.add('watching');
+            
+            // Pequeno delay para mostrar a animação
+            setTimeout(() => {
+                window.location.href = 'vol2/index.html';
+            }, 500);
         } else {
-            // Senha incorreta
+            // Senha incorreta - fecha os olhos
+            this.resetEyes();
             this.errorMsg.textContent = 'Senha incorreta!';
             this.passwordInput.value = '';
             this.passwordInput.focus();
@@ -673,11 +734,21 @@ class EasterEgg {
             setTimeout(() => {
                 this.passwordInput.style.animation = '';
             }, 300);
+            
+            // Pisca os olhos de forma mais rápida (triste)
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    this.blinkEyes();
+                }, i * 200);
+            }
         }
     }
 }
 
 // Inicializar Easter Egg
 document.addEventListener('DOMContentLoaded', () => {
-    new EasterEgg();
+    // Aguarda um pouco para garantir que todos os elementos estejam no DOM
+    setTimeout(() => {
+        new EasterEgg();
+    }, 100);
 });
