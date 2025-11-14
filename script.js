@@ -530,3 +530,154 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// Easter Egg - Detecção de sequência de teclas
+class EasterEgg {
+    constructor() {
+        this.sequence = [];
+        this.password = 'cdzao';
+        this.modal = document.getElementById('easterEggModal');
+        this.passwordInput = document.getElementById('easterEggPassword');
+        this.submitBtn = document.getElementById('easterEggSubmit');
+        this.cancelBtn = document.getElementById('easterEggCancel');
+        this.errorMsg = document.getElementById('easterEggError');
+        this.sequenceTimeout = null;
+        
+        this.init();
+    }
+    
+    init() {
+        // Detectar sequência de teclas
+        document.addEventListener('keydown', (e) => this.handleKeyPress(e));
+        
+        // Eventos do modal
+        this.submitBtn.addEventListener('click', () => this.checkPassword());
+        this.cancelBtn.addEventListener('click', () => this.closeModal());
+        
+        // Enter para submeter
+        this.passwordInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                this.checkPassword();
+            }
+        });
+        
+        // ESC para fechar
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.modal.classList.contains('show')) {
+                this.closeModal();
+            }
+        });
+        
+        // Fechar ao clicar fora do modal
+        this.modal.addEventListener('click', (e) => {
+            if (e.target === this.modal) {
+                this.closeModal();
+            }
+        });
+    }
+    
+    handleKeyPress(e) {
+        // Ignora se o modal estiver aberto
+        if (this.modal.classList.contains('show')) {
+            return;
+        }
+        
+        let key = e.key;
+        
+        // Konami Code: ↑ ↑ ↓ ↓ ← → ← → Enter
+        // Sequência: ArrowUp, ArrowUp, ArrowDown, ArrowDown, ArrowLeft, ArrowRight, ArrowLeft, ArrowRight, Enter
+        
+        const konamiCode = [
+            'ArrowUp', 
+            'ArrowUp', 
+            'ArrowDown', 
+            'ArrowDown', 
+            'ArrowLeft', 
+            'ArrowRight', 
+            'ArrowLeft', 
+            'ArrowRight', 
+            'Enter'
+        ];
+        
+        // Verifica se a tecla pressionada é parte do código
+        if (konamiCode.includes(key)) {
+            // Adiciona à sequência
+            this.sequence.push(key);
+            
+            // Mantém apenas os últimos N elementos (onde N é o tamanho do código)
+            if (this.sequence.length > konamiCode.length) {
+                this.sequence.shift();
+            }
+            
+            // Verifica se a sequência completa corresponde ao Konami Code
+            if (this.sequence.length === konamiCode.length) {
+                let matches = true;
+                for (let i = 0; i < konamiCode.length; i++) {
+                    if (this.sequence[i] !== konamiCode[i]) {
+                        matches = false;
+                        break;
+                    }
+                }
+                
+                if (matches) {
+                    // KONAMI CODE ATIVADO! 🎮
+                    this.showModal();
+                    this.sequence = [];
+                    e.preventDefault();
+                    return;
+                }
+            }
+        } else {
+            // Se a tecla não faz parte do código, reseta a sequência
+            // Mas permite Enter se estiver no final da sequência
+            if (key !== 'Enter' || this.sequence.length !== konamiCode.length - 1) {
+                this.sequence = [];
+            }
+        }
+        
+        // Timeout para resetar a sequência se o usuário demorar muito
+        clearTimeout(this.sequenceTimeout);
+        this.sequenceTimeout = setTimeout(() => {
+            this.sequence = [];
+        }, 3000); // 3 segundos de timeout (um pouco mais para o código completo)
+    }
+    
+    showModal() {
+        this.modal.classList.add('show');
+        this.passwordInput.value = '';
+        this.errorMsg.textContent = '';
+        this.passwordInput.focus();
+    }
+    
+    closeModal() {
+        this.modal.classList.remove('show');
+        this.passwordInput.value = '';
+        this.errorMsg.textContent = '';
+        this.sequence = [];
+    }
+    
+    checkPassword() {
+        const input = this.passwordInput.value.trim().toLowerCase();
+        
+        if (input === this.password) {
+            // Senha correta - redirecionar
+            window.location.href = 'vol2/index.html';
+        } else {
+            // Senha incorreta
+            this.errorMsg.textContent = 'Senha incorreta!';
+            this.passwordInput.value = '';
+            this.passwordInput.focus();
+            
+            // Efeito de shake no input
+            this.passwordInput.style.animation = 'shake 0.3s ease';
+            setTimeout(() => {
+                this.passwordInput.style.animation = '';
+            }, 300);
+        }
+    }
+}
+
+// Inicializar Easter Egg
+document.addEventListener('DOMContentLoaded', () => {
+    new EasterEgg();
+});
