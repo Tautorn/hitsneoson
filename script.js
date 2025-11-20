@@ -28,6 +28,16 @@ class NeoSonPlayer {
                 duration: "1:45"
             },
             {
+                title: "Cabelin do Sertão",
+                file: "Cabelin do Sertao.mp3",
+                duration: "2:42"
+            },
+            {
+                title: "Cabelin de Natal",
+                file: "Cabelin de Natal.mp3",
+                duration: "2:49"
+            },
+            {
                 title: "Cabelin de Playmobil [English Version]",
                 file: "O Cabelin de Playmobil [English Version].mp3",
                 duration: "3:37"
@@ -66,6 +76,16 @@ class NeoSonPlayer {
                 title: "Prandinin Prateado",
                 file: "Prandinin Prateado.mp3",
                 duration: "3:44"
+            },
+            {
+                title: "Grabiela",
+                file: "Grabiela.mp3",
+                duration: "3:13"
+            },
+            {
+                title: "Tiaguin Devspaces",
+                file: "Tiaguin Devspaces.mp3",
+                duration: "3:34"
             }
         ];
         
@@ -311,7 +331,7 @@ class NeoSonPlayer {
             trackElement.className = `track ${index === this.currentTrackIndex ? 'active' : ''}`;
             trackElement.setAttribute('data-track', index);
             
-            const trackNameHTML = index === 8 || index === 9 || index === 10
+            const trackNameHTML = index === 13 || index === 14 || index === 3 || index === 4
                 ? `${track.title} <span class="chip">NEW</span>`
                 : track.title;
             
